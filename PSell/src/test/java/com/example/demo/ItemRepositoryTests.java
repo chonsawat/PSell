@@ -30,25 +30,31 @@ public class ItemRepositoryTests {
 	
 	@Test
 	public void testFindItemByUserOwner() {
-		User user = new User();
-		user.setEmail("chonsawat.naknam@gmail.com");
-		user.setPassword("chonsawat");
-		user.setFirstName("Chonsawat");
-		user.setLastName("Nakanam");
-		repo.save(user);
+//		User user = new User();
+//		user.setEmail("chonsawat2.naknam@gmail.com");
+//		user.setPassword("chonsawat");
+//		user.setFirstName("Chonsawat");
+//		user.setLastName("Nakanam");
+//		repo.save(user);
 		
 		String email = "chonsawat.naknam@gmail.com";
-		user = repo.findByEmail(email);
+		User user = repo.findByEmail(email);
 		
-		Item item = new Item();
-		item.setItemName("a");
-		item.setPath("images/a.png");
-		item.setOwner(user.getId());
+//		Item item = new Item();
+//		item.setItemName("a");
+//		item.setPath("images/a.png");
+//		item.setOwner(user.getId());
 		
-		assertThat(item.getPath()).isEqualTo("images/a.png");
-		itemRepo.save(item);
+//		assertThat(item.getPath()).isEqualTo("images/a.png");
+//		itemRepo.save(item);
 		
-//		Item items = itemRepo.findByOwner(owner);
-//		assertThat(items).isNotNull();
+		List<Item> items = itemRepo.findByOwner(user.getId());
+		assertThat(items).isNotNull();
+		
+		for (var item : items) {
+			System.out.println(item.getId());
+			assertThat(item.getPath()).isEqualTo("images/a.png");
+		}
+		
 	}
 }
