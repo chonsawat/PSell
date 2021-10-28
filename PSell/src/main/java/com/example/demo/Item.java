@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,11 +22,22 @@ public class Item {
 	@Column(nullable=false, length=50)
 	private String itemName;
 	
-	@Column(nullable=true)
-	private Long owner;
+	@ManyToOne
+	@JoinColumn(name="owner")
+	private User user;
+	
+	public Item() {}
 
 	public Long getId() {
 		return id;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public void setId(Long id) {
@@ -46,14 +59,5 @@ public class Item {
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
 	}
-
-	public Long getOwner() {
-		return owner;
-	}
-
-	public void setOwner(Long owner) {
-		this.owner = owner;
-	}
-	
 	
 }
