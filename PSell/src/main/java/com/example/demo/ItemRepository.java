@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface ItemRepository extends JpaRepository<Item, Long> {
 	@Query("SELECT u FROM Item u WHERE u.owner= ?1")
-	List<Item> findByOwner(String owner);
+	Item findByOwner(Long owner);
 }

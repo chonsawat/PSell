@@ -20,8 +20,8 @@ public class Item {
 	@Column(nullable=false, length=50)
 	private String itemName;
 	
-	@Column(nullable=true, length=64)
-	private String owner;
+	@Column(nullable=true)
+	private Long owner;
 
 	public Long getId() {
 		return id;
@@ -47,11 +47,11 @@ public class Item {
 		this.itemName = itemName;
 	}
 
-	public String getOwner() {
+	public Long getOwner() {
 		return owner;
 	}
 
-	public void setOwner(String owner) {
+	public void setOwner(Long owner) {
 		this.owner = owner;
 	}
 	

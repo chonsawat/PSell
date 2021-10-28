@@ -2,6 +2,8 @@ package com.example.demo;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -20,36 +22,33 @@ public class ItemRepositoryTests {
 	private UserRepository repo;
 	
 	@Autowired
+	private ItemRepository itemRepo;
+	
+	@Autowired
 	private TestEntityManager entityManager;
 	
-	@Test 
-	public void testCreateUser() {
+	
+	@Test
+	public void testFindItemByUserOwner() {
 		User user = new User();
 		user.setEmail("chonsawat.naknam@gmail.com");
 		user.setPassword("chonsawat");
 		user.setFirstName("Chonsawat");
 		user.setLastName("Nakanam");
+		repo.save(user);
 		
-		User savedUser = repo.save(user);
-		User existUser = entityManager.find(User.class, savedUser.getId());
+		String email = "chonsawat.naknam@gmail.com";
+		user = repo.findByEmail(email);
 		
-		assertThat(existUser.getEmail()).isEqualTo(user.getEmail());
-	}
-	
-	@Test 
-	public void testFindUserByEmail() {
-		String email = "chonsawat.naknam@gmail.com";
-		User user = repo.findByEmail(email);
-		assertThat(user).isNotNull();
-	}
-	
-	@Test
-	public void testFindItemByUserEmail() {
-		String email = "chonsawat.naknam@gmail.com";
 		Item item = new Item();
-		item.setPath("A.jpg");
+		item.setItemName("a");
+		item.setPath("images/a.png");
+		item.setOwner(user.getId());
 		
-		User user = repo.findByEmail(email);
-		assertThat(user).isNotNull();
+		assertThat(item.getPath()).isEqualTo("images/a.png");
+		itemRepo.save(item);
+		
+//		Item items = itemRepo.findByOwner(owner);
+//		assertThat(items).isNotNull();
 	}
 }
