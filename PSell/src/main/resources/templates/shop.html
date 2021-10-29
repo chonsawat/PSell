@@ -21,7 +21,12 @@
     </form>
 
     <div th:each="item: ${items}">
-        <img class="img-thumbnail" style="height: 250px; width: 250px;" th:src="@{${item.getPath()}}">
+    	<img class="img-thumbnail" style="height: 250px; width: 250px;" th:src="@{${item.getPath()}}">
+        <p th:text="'Art name: ' + ${item.getItemName()}">
+        <form th:action="@{'/confirm/' + ${item.getId()}}" method="get">
+        	<button type="submit" class="btn btn-success m-3">Buy</button>
+    	</form>
+    	<br>
     </div>
 
 
