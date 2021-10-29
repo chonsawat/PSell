@@ -3,11 +3,13 @@ package com.example.demo;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import javax.transaction.Transactional;
 
 import org.hibernate.annotations.Filter;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -32,7 +34,8 @@ public class ItemRepositoryTests {
 	private TestEntityManager entityManager;
 	
 	
-	@Test
+//	@Test
+	@DisplayName("InsertItems")
 	public void testInsertItem() {
 		User user = new User();
 		user.setEmail("chonsawat.naknam@gmail.com");
@@ -45,20 +48,24 @@ public class ItemRepositoryTests {
 		user = repo.findByEmail(email);
 		
 		Item item1 = new Item();
+		item1.setId((long) 1);
 		item1.setItemName("a");
 		item1.setPath("images/a.png");
 		item1.setUser(user);
 		
 		Item item2 = new Item();
+		item2.setId((long) 2);
 		item2.setItemName("b");
 		item2.setPath("images/b.png");
 		item2.setUser(user);
 
 		Item item3 = new Item();
+		item3.setId((long) 3);
 		item3.setItemName("c");
 		item3.setPath("images/c.png");
 		
 		Item item4 = new Item();
+		item4.setId((long) 4);
 		item4.setItemName("d");
 		item4.setPath("images/d.png");
 		
@@ -69,6 +76,7 @@ public class ItemRepositoryTests {
 	}
 	
 	@Test
+	@DisplayName("FindListItemWhereOwnerNotNull")
 	public void testFindItemOwnerNotNull() {	
 		String email = "chonsawat.naknam@gmail.com";
 		User user = repo.findByEmail(email);
@@ -82,12 +90,42 @@ public class ItemRepositoryTests {
 	}
 	
 	@Test
+	@DisplayName("FindListItemWhereOwnerIsNull")
 	public void testFindItemOwnerIsNull2() {		
 		List<Item> items = itemRepo.findByUser(null);
 		for (var item : items) {
 			System.out.println("Show null items name: " + item.getItemName());
 		}
 		assertThat(items).isNotEmpty();
+	}
+	
+	@Test
+	@DisplayName("FindItem")
+	public void testFindItem2() {
+		
+		Item item = itemRepo.findById((long) 1).get();
+		
+		System.out.println("Show items detail:\nID: " + item.getId() +
+				"\nName: " + item.getItemName() +
+				"\nPath: " + item.getPath() +
+				"\nOwner: " + item.getUser()
+		);
+		
+		assertThat(item).isNotNull();
+	}
+	
+	@Test
+	@DisplayName("FindItemAndSetOwner")
+	public void testFindItemAndSetOwner() {
+		
+		User user = repo.findByEmail("chonsawat.nakanam@kkumail.com");
+		Item item = itemRepo.findById((long) 4).get();
+		
+		repo.save(user);
+		item.setUser(user);
+		itemRepo.save(item);
+		
+		assertThat(item).isNotNull();
 	}
 	
 }

@@ -20,6 +20,11 @@ public class AppController {
 		return "index";
 	}
 	
+	@GetMapping("/WelcomeShop")
+	public String viewShopPage() {
+		return "welcomeShop";
+	}
+	
 	@GetMapping("/register")
 	public String showSignUpForm(Model model) {
 		model.addAttribute("user", new User());
@@ -27,7 +32,7 @@ public class AppController {
 	}
 	
 	@PostMapping("/process_register")
-	public String proceRegistration(User user) {
+	public String processRegistration(User user) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String encodedPassword = encoder.encode(user.getPassword());
 		user.setPassword(encodedPassword);
