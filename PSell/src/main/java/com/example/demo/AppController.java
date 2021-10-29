@@ -15,9 +15,25 @@ public class AppController {
 	@Autowired
 	private UserRepository repo;
 	
+	@Autowired
+	private ItemRepository itemRepo;
+	
 	@GetMapping("")
 	public String viewHomePage() {
 		return "index";
+	}
+	
+	@GetMapping("/WelcomeShop")
+	public String viewWelcomeShopPage() {
+		return "welcomeShop";
+	}
+	
+	@GetMapping("/shop")
+	public String viewShopPage(Model model) {
+//		List<Item> items = itemRepo.findByUser(null);
+		List<Item> items = itemRepo.findAll();
+		model.addAttribute("items", items);
+		return "shop";
 	}
 	
 	@GetMapping("/register")
@@ -27,7 +43,7 @@ public class AppController {
 	}
 	
 	@PostMapping("/process_register")
-	public String proceRegistration(User user) {
+	public String processRegistration(User user) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String encodedPassword = encoder.encode(user.getPassword());
 		user.setPassword(encodedPassword);

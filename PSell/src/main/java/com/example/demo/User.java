@@ -26,6 +26,14 @@ public class User {
 	@Column(nullable=false, length=20)
 	private String lastName;
 	
+	public User() {}
+	public User(String email, String password, String firstName, String lastName) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
 	public String getPassword() {
 		return password;
 	}
@@ -55,5 +63,8 @@ public class User {
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	public String getFullName() {
+		return firstName + " " + lastName;
 	}
 }
