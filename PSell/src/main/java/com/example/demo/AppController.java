@@ -3,10 +3,13 @@ package com.example.demo;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -36,6 +39,15 @@ public class AppController {
 		return "shop";
 	}
 	
+	@GetMapping("/owner")
+	public String viewOwnerPage(Authentication authentication, Model model) {
+		String email = authentication.getName();
+		User user = repo.findByEmail(email);
+		List<Item> items = itemRepo.findByUser(user);
+		model.addAttribute("items", items);
+		return "owner";
+	}
+	
 	@GetMapping("/register")
 	public String showSignUpForm(Model model) {
 		model.addAttribute("user", new User());
@@ -47,7 +59,6 @@ public class AppController {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String encodedPassword = encoder.encode(user.getPassword());
 		user.setPassword(encodedPassword);
-		
 		repo.save(user);
 		return "register_success";
 	}
