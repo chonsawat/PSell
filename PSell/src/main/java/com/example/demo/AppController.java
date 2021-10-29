@@ -15,14 +15,25 @@ public class AppController {
 	@Autowired
 	private UserRepository repo;
 	
+	@Autowired
+	private ItemRepository itemRepo;
+	
 	@GetMapping("")
 	public String viewHomePage() {
 		return "index";
 	}
 	
 	@GetMapping("/WelcomeShop")
-	public String viewShopPage() {
+	public String viewWelcomeShopPage() {
 		return "welcomeShop";
+	}
+	
+	@GetMapping("/shop")
+	public String viewShopPage(Model model) {
+//		List<Item> items = itemRepo.findByUser(null);
+		List<Item> items = itemRepo.findAll();
+		model.addAttribute("items", items);
+		return "shop";
 	}
 	
 	@GetMapping("/register")
