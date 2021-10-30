@@ -29,9 +29,9 @@
 
     <div th:each="item: ${items}" class="container" style="text-align: center; margin-top: 10px;">
         <img class="img-thumbnail" style="height: 250px; width: 250px; margin-top: 20px;" th:src="@{${item.getPath()}}">
-        <p th:text="'Art name: ' + ${item.getItemName()}">
+        <p th:text="'Art name: ' + ${item.getItemName()}" class="text-light">
         <form th:action="@{'/refund/'+ ${item.getId()}}" method="get">
-            <button type="submit" class="btn text-light" style="background-color: rgb(140,140,250); ">Refund</button>
+            <button type="submit" class="btn text-light" style="background-color: rgb(140,140,250); margin-bottom: 20px;">Refund</button>
         </form>   
     </div>
 
