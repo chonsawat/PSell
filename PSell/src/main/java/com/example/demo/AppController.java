@@ -39,7 +39,6 @@ public class AppController {
 	@GetMapping("/shop")
 	public String viewShopPage(Model model) {
 		List<Item> items = itemRepo.findByUser(null);
-//		List<Item> items = itemRepo.findAll();
 		model.addAttribute("items", items);
 		return "shop";
 	}
