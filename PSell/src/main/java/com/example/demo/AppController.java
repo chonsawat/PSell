@@ -31,11 +31,6 @@ public class AppController {
 		return "index";
 	}
 	
-	@GetMapping("/WelcomeShop")
-	public String viewWelcomeShopPage() {
-		return "welcomeShop";
-	}
-	
 	@GetMapping("/shop")
 	public String viewShopPage(Model model) {
 		List<Item> items = itemRepo.findByUser(null);
