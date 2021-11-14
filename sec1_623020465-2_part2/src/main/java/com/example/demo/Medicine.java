@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,15 +19,15 @@ public class Medicine {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int mid;
 	
-	@Column(nullable=false, unique=true)
+	@Column(nullable=false)
 	private String name;
 	
 	@Column(nullable=false)
 	private double price;
 	
-	@ManyToOne(optional=false)
+	@OneToMany
 	@JoinColumn(name="hid")
-	private History history;
+	private List<History> history;
 	
 	public Medicine() {
 		super();

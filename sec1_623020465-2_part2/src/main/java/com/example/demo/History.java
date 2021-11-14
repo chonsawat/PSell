@@ -28,33 +28,27 @@ public class History {
 	@JoinColumn(name="username")
 	private User username;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "treatment", 
-				referencedColumnName = "tid")
+	@ManyToOne
+	@JoinColumn(name = "tid")
 	private Treatment treatment;
 	
-	@OneToMany(targetEntity=Medicine.class, 
-			   mappedBy="history",
-			   cascade=CascadeType.ALL, 
-			   fetch = FetchType.LAZY)
-	private List<Medicine> medicine;
+	@ManyToOne
+	@JoinColumn(name="mid")
+	private Medicine medicine;
 	
 	public History() {
 		super();
 	}
 	
-
 	public User getUsername() {
 		return username;
 	}
-
 
 	public void setUsername(User username) {
 		this.username = username;
 	}
 
-
-	public History(String descrpition, User user, Treatment treatment, List<Medicine> medicine) {
+	public History(String descrpition, User user, Treatment treatment, Medicine medicine) {
 		super();
 		this.descrpition = descrpition;
 		this.username = user;
@@ -62,11 +56,9 @@ public class History {
 		this.medicine = medicine;
 	}
 
-
 	public User getUser() {
 		return username;
 	}
-
 
 	public void setUser(User user) {
 		this.username = user;
@@ -98,13 +90,13 @@ public class History {
 
 
 
-	public List<Medicine> getMedicine() {
+	public Medicine getMedicine() {
 		return medicine;
 	}
 
 
 
-	public void setMedicine(List<Medicine> medicine) {
+	public void setMedicine(Medicine medicine) {
 		this.medicine = medicine;
 	}
 

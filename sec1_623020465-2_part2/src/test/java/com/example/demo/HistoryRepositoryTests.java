@@ -41,18 +41,18 @@ public class HistoryRepositoryTests {
 		repo_treatment.save(new Treatment("รักษาประเภทตอง", 50000.0));
 		
 		repo_medicine.save(new Medicine("Astra", 2500.0));
-//		repo_medicine.save(new Medicine("Phizers", 1500.0));
-//		repo_medicine.save(new Medicine("Parezaltamol", 50.0));
-//		repo_medicine.save(new Medicine("Sinofarm", 60000));
+		repo_medicine.save(new Medicine("Phizers", 1500.0));
+		repo_medicine.save(new Medicine("Parezaltamol", 50.0));
+		repo_medicine.save(new Medicine("Sinofarm", 60000));
 		
 		
-//		User user = repo_user.findByUsername("0973566421");
-//		Treatment treat = repo_treatment.findByName("รักษาประเภทตอง");
-//		List<Medicine> medicine = new ArrayList<Medicine>();
-//		medicine.add(repo_medicine.findByName("Astra"));
-//		medicine.add(repo_medicine.findByName("Phizers"));
+		User user = repo_user.findByUsername("0973566421");
+		Treatment treat = repo_treatment.findByName("รักษาประเภทตอง");
+		Medicine medicine = repo_medicine.findByName("Astra");
+		medicine = repo_medicine.findByName("Phizers");
 //		
-//		repo_history.save( new History("ครั้งแรกก็เจ็บดีนะ", user, treat, medicine) );
+		repo_history.save( new History("ครั้งแรกก็เจ็บดีนะ", user, treat, medicine) );
+		repo_history.save( new History("ครั้งแรกก็เจ็บดีนะ", user, treat, medicine) );
 	}
 	
 //	@Test

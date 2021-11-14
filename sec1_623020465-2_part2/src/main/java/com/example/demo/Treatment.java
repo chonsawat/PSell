@@ -1,10 +1,14 @@
 package com.example.demo;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -29,14 +33,15 @@ public class Treatment {
 		this.tid = tid;
 	}
 
-	@OneToOne(mappedBy = "treatment")
-	private History history;
+	@OneToMany
+	@JoinColumn(name="hid")
+	private List<History> history;
 	
-	public History getHistory() {
+	public List<History> getHistory() {
 		return history;
 	}
 
-	public void setHistory(History history) {
+	public void setHistory(List<History> history) {
 		this.history = history;
 	}
 

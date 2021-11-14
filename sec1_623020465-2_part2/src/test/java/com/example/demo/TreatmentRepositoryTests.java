@@ -29,7 +29,7 @@ public class TreatmentRepositoryTests {
 		repo.save(new Treatment("รักษาแบบปกติ", 50.0));
 		
 		Treatment savedTreatment = repo.save(treat);		
-		Treatment existTreatment = entityManager.find(Treatment.class, savedTreatment.getUid());
+		Treatment existTreatment = entityManager.find(Treatment.class, savedTreatment.getTid());
 		
 		assertThat(existTreatment.getName()).isEqualTo(treat.getName());
 	}
