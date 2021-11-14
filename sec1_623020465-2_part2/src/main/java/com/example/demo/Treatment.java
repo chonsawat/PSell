@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -12,7 +13,7 @@ import javax.persistence.Table;
 public class Treatment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int uid;
+	private int tid;
 	
 	@Column(nullable=false, unique=true)
 	private String name;
@@ -20,6 +21,25 @@ public class Treatment {
 	@Column(nullable=false)
 	private double price;
 	
+	public int getTid() {
+		return tid;
+	}
+
+	public void setTid(int tid) {
+		this.tid = tid;
+	}
+
+	@OneToOne(mappedBy = "treatment")
+	private History history;
+	
+	public History getHistory() {
+		return history;
+	}
+
+	public void setHistory(History history) {
+		this.history = history;
+	}
+
 	public Treatment() {
 		super();
 	}
@@ -28,14 +48,6 @@ public class Treatment {
 		super();
 		this.name = name;
 		this.price = price;
-	}
-
-	public int getUid() {
-		return uid;
-	}
-
-	public void setUid(int uid) {
-		this.uid = uid;
 	}
 
 	public String getName() {

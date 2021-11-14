@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.CSKKU_Lab.demo;
 
 import java.util.List;
 
@@ -14,62 +14,48 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name="History")
 public class History {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int hid;
 	
 	private String descrpition;
 	
 	@ManyToOne(optional=false)
-	@JoinColumn(name="username")
-	private User username;
+	@JoinColumn(name="uid")
+	private User user;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "treatment", 
-				referencedColumnName = "tid")
+	@JoinColumn(name = "tid", referencedColumnName = "tid")
 	private Treatment treatment;
 	
-	@OneToMany(targetEntity=Medicine.class, 
-			   mappedBy="history",
-			   cascade=CascadeType.ALL, 
-			   fetch = FetchType.LAZY)
-	private List<Medicine> medicine;
+	@OneToMany(targetEntity=Medicine.class, mappedBy="history",
+    		cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Medicine> medicines;
 	
 	public History() {
 		super();
 	}
 	
 
-	public User getUsername() {
-		return username;
-	}
-
-
-	public void setUsername(User username) {
-		this.username = username;
-	}
-
-
 	public History(String descrpition, User user, Treatment treatment, List<Medicine> medicine) {
 		super();
 		this.descrpition = descrpition;
-		this.username = user;
+		this.user = user;
 		this.treatment = treatment;
-		this.medicine = medicine;
+		this.medicines = medicine;
 	}
 
 
 	public User getUser() {
-		return username;
+		return user;
 	}
 
 
 	public void setUser(User user) {
-		this.username = user;
+		this.user = user;
 	}
 
 	public int getHid() {
@@ -99,13 +85,13 @@ public class History {
 
 
 	public List<Medicine> getMedicine() {
-		return medicine;
+		return medicines;
 	}
 
 
 
 	public void setMedicine(List<Medicine> medicine) {
-		this.medicine = medicine;
+		this.medicines = medicine;
 	}
 
 

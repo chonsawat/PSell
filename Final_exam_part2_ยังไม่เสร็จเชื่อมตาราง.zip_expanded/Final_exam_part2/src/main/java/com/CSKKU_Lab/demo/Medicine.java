@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.CSKKU_Lab.demo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
