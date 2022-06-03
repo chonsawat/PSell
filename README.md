@@ -9,7 +9,7 @@
 3. MySQL
 
 ### Database Relational Schema
-![](docs%5Cimages%5C17-01-41.png)
+![](docs/images/17-01-41.png)
 
 ### How to use
 1. Cloning the repository
@@ -17,17 +17,17 @@
     git clone https://github.com/chonsawat/PSell
     ```
 2. Open to Project
-![](docs%5Cimages%5C19-12-15.png)
-![](docs%5Cimages%5C16-36-55.png)
+![](docs/images/19-12-15.png)
+![](docs/images/16-36-55.png)
 
 3. Edit file `src/main/resources/application.properties`
-![](docs%5Cimages%5C19-19-48.png)
+![](docs/images/19-19-48.png)
 
 4. Run as Sequences in Example
-![](docs%5Cimages%5C19-01-04.png)
+![](docs/images/19-01-04.png)
 
 5. open [https://localhost:8081/](https://localhost:8081/)
-![](docs%5Cimages%5C16-40-36.png)
+![](docs/images/16-40-36.png)
 The 1 user in database is use password `admin`
 
 ### The END
