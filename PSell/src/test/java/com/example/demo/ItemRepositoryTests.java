@@ -17,6 +17,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.annotation.Rollback;
 
 @DataJpaTest
@@ -34,12 +35,16 @@ public class ItemRepositoryTests {
 	private TestEntityManager entityManager;
 	
 	
-//	@Test
+	@Test
 	@DisplayName("InsertItems")
 	public void testInsertItem() {
+		
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		String encodedPassword = encoder.encode("admin");
+		
 		User user = new User();
 		user.setEmail("chonsawat.naknam@gmail.com");
-		user.setPassword("chonsawat");
+		user.setPassword(encodedPassword);
 		user.setFirstName("Chonsawat");
 		user.setLastName("Nakanam");
 		repo.save(user);
@@ -49,25 +54,25 @@ public class ItemRepositoryTests {
 		
 		Item item1 = new Item();
 		item1.setId((long) 1);
-		item1.setItemName("a");
-		item1.setPath("images/a.png");
+		item1.setItemName("Cute");
+		item1.setPath("images/trap.png");
 		item1.setUser(user);
 		
 		Item item2 = new Item();
 		item2.setId((long) 2);
-		item2.setItemName("b");
-		item2.setPath("images/b.png");
+		item2.setItemName("Mob");
+		item2.setPath("images/mob.png");
 		item2.setUser(user);
 
 		Item item3 = new Item();
 		item3.setId((long) 3);
-		item3.setItemName("c");
-		item3.setPath("images/c.png");
+		item3.setItemName("Women");
+		item3.setPath("images/women.jpg");
 		
 		Item item4 = new Item();
 		item4.setId((long) 4);
-		item4.setItemName("d");
-		item4.setPath("images/d.png");
+		item4.setItemName("Smart");
+		item4.setPath("images/light.jpg");
 		
 		itemRepo.save(item1);
 		itemRepo.save(item2);

@@ -86,6 +86,8 @@ public class AppController {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String encodedPassword = encoder.encode(user.getPassword());
 		user.setPassword(encodedPassword);
+
+		user.setPassword(user.getPassword());
 		repo.save(user);
 		return "register_success";
 	}

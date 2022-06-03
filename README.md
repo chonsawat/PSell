@@ -1,19 +1,34 @@
-# MiniDrinkShop
- โปรเจควิชา Software Design ปี 3
+# PSell (Picture Sell)
+มินิโปรเจควิชา Software Design ปี 3 เทอม 1
+> - This Mini-Project About Simple Application to Login/Logout and simple Shopping 
+> - You can use this project as free to you, to develop in your use (You don't need to `PULL REQUEST` This project)
 
-# เตรียมโปรเจค
-เราจะใช้ไฟล์นี้กันนะเพื่อนๆ
-![image](https://user-images.githubusercontent.com/61898331/134207965-1c136a4e-2868-4d3a-af5f-2c5bc7127086.png)
+### Requirement
+1. Eclipse
+2. Java JDK 18
+3. MySQL
 
-### 1. Open project from file system
-![image](https://user-images.githubusercontent.com/61898331/134208334-0734e757-ee4e-4260-9631-f4f507416d52.png)
+### Database Relational Schema
+![](docs%5Cimages%5C17-01-41.png)
 
-### 2. Directory
-![image](https://user-images.githubusercontent.com/61898331/134208413-0f11db12-96fa-4e1a-8e9d-9482c55b8e02.png)
+### How to use
+1. Cloning the repository
+    ```git
+    git clone https://github.com/chonsawat/PSell
+    ```
+2. Open to Project
+![](docs%5Cimages%5C19-12-15.png)
+![](docs%5Cimages%5C16-36-55.png)
 
-### 3. เลือกไฟล์โปรเจคเรา
-![image](https://user-images.githubusercontent.com/61898331/134208446-de06dd73-5e31-4da9-a703-86cfbabe8d2f.png)
+3. Edit file `src/main/resources/application.properties`
+![](docs%5Cimages%5C19-19-48.png)
 
-### 4. Finish
-![image](https://user-images.githubusercontent.com/61898331/134208504-a274fe1b-9fdf-45fa-aee3-b569b513adfd.png)
+4. Run as Sequences in Example
+![](docs%5Cimages%5C19-01-04.png)
 
+5. open [https://localhost:8081/](https://localhost:8081/)
+![](docs%5Cimages%5C16-40-36.png)
+The 1 user in database is use password `admin`
+
+### The END
+Thank for reading README.md, Peace.

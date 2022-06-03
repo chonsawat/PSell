@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.0.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
+</head>
+<body style="background-color: #242424; " >
+    <div style="text-align: center; margin-top: 200px; ">
+        <h1 class="font-effect-neon" style="color:rgb(255, 255, 255); font-size: 100px;;" >NMM GALLERY</h1> 
+        <div class="wrapper">
+            <div class="typing-demo" >
+                <p style="color:rgb(255, 255, 255); margin-top: 20px; font-family: 'Audiowide', sans-serif;">ART GALLERY FOR BUY AND COLLECT ART WORK.</p>
+            </div>
+        </div>
+            
+        <h3 style= "margin-top: 30px;" >
+            <a th:href="@{/shop}"> <button type="submit" class="btn btn btn-outline-success m-1" style="font-size: 25px;"   >Login to Shopping</button> </a>
+            <a th:href="@{/register}"> <button type="submit" class="btn btn btn-outline-primary m-1" style="font-size: 25px;">Register</button> </a>
+        </h3>
+    </div>
+</body>
+
+<style>
+    body{
+        font-family: "Audiowide", sans-serif;
+    }
+    .wrapper {
+        display: flex;
+        align-items: center;
+         justify-content: center;
+    }
+
+    .typing-demo {
+        width: 53ch;
+        animation: typing 3s steps(30), blink .2s step-end infinite alternate;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 3px solid;
+        font-family: monospace;
+        font-size: 30px;
+    }
+
+    @keyframes typing {
+         from {
+                width: 0
+             }
+    }
+    
+    @keyframes blink {
+        50% {
+                border-color: transparent
+        }
+    }
+</style>
+</html>

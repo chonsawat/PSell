@@ -9,6 +9,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.annotation.Rollback;
 
 @DataJpaTest
@@ -24,9 +25,13 @@ public class UserRepositoryTests {
 	
 	@Test 
 	public void testCreateUser() {
+		
+//		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+//		String encodedPassword = encoder.encode("admin");
+		
 		User user = new User();
 		user.setEmail("chonsawat.naknam@gmail.com");
-		user.setPassword("chonsawat");
+		user.setPassword("admin");
 		user.setFirstName("Chonsawat");
 		user.setLastName("Nakanam");
 		
